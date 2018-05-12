@@ -35,7 +35,7 @@
     UILabel *leftLabel = [[UILabel alloc] init];
     [self.view addSubview:leftLabel];
     [leftLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.view).with.mas_offset(60.0f);
+        make.left.mas_equalTo(self.view).with.mas_offset(10.0f);
         make.top.mas_equalTo(self.view).with.mas_offset(60.0f);
     }];
     leftLabel.text = @"欢迎使用探探, 在使用过程中有疑问请";
@@ -60,9 +60,15 @@
     
     //抗拉伸
     [leftLabel setContentHuggingPriority:UILayoutPriorityRequired
-                              forAxis:UILayoutConstraintAxisHorizontal];
+                                 forAxis:UILayoutConstraintAxisHorizontal];
     [rightBtn setContentHuggingPriority:UILayoutPriorityDefaultLow
                                 forAxis:UILayoutConstraintAxisHorizontal];
+    
+    //抗压缩
+    [leftLabel setContentCompressionResistancePriority:UILayoutPriorityDefaultLow
+                                               forAxis:UILayoutConstraintAxisHorizontal];
+    [rightBtn setContentCompressionResistancePriority:UILayoutPriorityRequired
+                                              forAxis:UILayoutConstraintAxisHorizontal];
 }
 
 - (void)didPressedRightBtn{
@@ -72,3 +78,4 @@
 }
 
 @end
+
